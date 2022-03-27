@@ -104,7 +104,7 @@
 
 
 import React, {useEffect, useState} from "react";
-import MyTuits from "./my-tuits";
+//import MyTuits from "./my-tuits";
 import {HashRouter, Link, Route, Routes, useNavigate, useLocation} from "react-router-dom";
 import * as service from "../../services/security-service"
 import TuitsAndReplies from "./tuits-and-replies";
@@ -174,11 +174,11 @@ const Profile = () => {
           <b>178</b> Following
           <b className="ms-4">51.1M</b> Followers
           <ul className="mt-4 nav nav-pills nav-fill">
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to="/profile/mytuits"
                     className={`nav-link ${location.pathname.indexOf('mytuits') >= 0 ? 'active':''}`}>
                 Tuits</Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link to="/profile/tuits-and-replies"
                     className={`nav-link ${location.pathname.indexOf('tuits-and-replies') >= 0 ? 'active':''}`}>
@@ -199,7 +199,7 @@ const Profile = () => {
       </div>
       {profile.username &&
           <Routes>
-            <Route path="/mytuits" element={<MyTuits/>}/>
+            {/* <Route path="/mytuits" element={<MyTuits/>}/> */}
             <Route path="/tuits-and-replies" element={<TuitsAndReplies/>}/>
             <Route path="/media" element={<Media/>}/>
             <Route path="/likes" element={<MyLikes/>}/>
