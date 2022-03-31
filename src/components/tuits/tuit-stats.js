@@ -1,31 +1,7 @@
-import React, {useState, useEffect} from "react";
-import * as service from "../../services/likes-service";
+import React from "react";
 
 const TuitStats = ({tuit, dislikeTuit, likeTuit = () => {}}) => {
-  const [isLikedByMe, setLikeTuit] = useState(false);
-  const [isDislikedByMe, setDislikeTuit] = useState(false);
-  const isTuitLikedByMe = () =>
-      service.tuitLikedByMe('me', tuit._id)
-          .then((like) => {
-              if (like) {
-                  setLikeTuit(true);
-              } else {
-                  setLikeTuit(false);
-              }
-          })
-
-  const isTuitDislikedByMe = () =>
-      service.tuitDislikedByMe('me', tuit._id)
-          .then((dislike) => {
-              if (dislike) {
-                  setDislikeTuit(true);
-              } else {
-                  setDislikeTuit(false);
-              }
-          })
-
-  useEffect(isTuitLikedByMe);
-  useEffect(isTuitDislikedByMe);
+  
     return (
       <div className="row mt-2">
         <div className="col">
@@ -39,11 +15,11 @@ const TuitStats = ({tuit, dislikeTuit, likeTuit = () => {}}) => {
         <div className="col">
           <span onClick={() => likeTuit(tuit)}>
               {
-                isLikedByMe &&
+                tuit.stats && tuit.stats.likes && tuit.stats.likes > 0 &&
                   <i className="fas fa-thumbs-up me-1" style={{color: 'red'}}></i>
               }
               {
-                !isLikedByMe &&
+                tuit.stats && tuit.stats.likes && tuit.stats.likes <= 0 &&
                   <i className="far fa-thumbs-up me-1"></i>
               }
             {tuit.stats && tuit.stats.likes}
@@ -52,14 +28,14 @@ const TuitStats = ({tuit, dislikeTuit, likeTuit = () => {}}) => {
         <div className="col">
           <span onClick={() => dislikeTuit(tuit)}>
                 {
-                     isDislikedByMe &&
+                    tuit.stats && !tuit.stats.likes && !tuit.stats.dislikes > 0 &&
                     <i className="fas fa-thumbs-down me-1" style={{color: 'blue'}}></i>
                 }
                 {
-                     !isDislikedByMe &&
+                    tuit.stats && !tuit.stats.dislikes && !tuit.stats.dislikes <= 0 &&
                     <i className="far fa-thumbs-down me-1"></i>
                 }
-            {tuit.stats && tuit.stats.dislikes}
+            {tuit.stats && !tuit.stats.likes}
           </span>
         </div>
         <div className="col">
