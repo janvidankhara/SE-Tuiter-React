@@ -32,7 +32,7 @@ const TuitStats = ({tuit, dislikeTuit, likeTuit = () => {}}) => {
                     <i className="fas fa-thumbs-down me-1" style={{color: 'blue'}}></i>
                 }
                 {
-                    tuit.stats && tuit.stats.dislikes <= 0 &&
+                    tuit.stats && tuit.stats.dislikes  <= 0 &&
                     <i className="far fa-thumbs-down me-1"></i>
                 }
             {tuit.stats && tuit.stats.dislikes}
