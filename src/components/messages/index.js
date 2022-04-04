@@ -16,11 +16,30 @@ const Messages = () => {
           </div>
       <div className="chatBox">box</div>
           <div className= "chatBoxWrapper">
-            <div className="chatBoxTop"></div>
-            <Message />
-            <Message own={true}/>
-            <Message />
-            <div className="chatBoxBottom"></div>
+            <div className="chatBoxTop">
+              <Message />
+              <Message own={true}/>
+              <Message />
+              <Message />
+              <Message own={true}/>
+              <Message />
+              <Message />
+              <Message own={true}/>
+              <Message />
+              <Message />
+              <Message own={true}/>
+              <Message />
+              <Message own={true}/>
+              <Message />
+              <Message />
+              <Message own={true}/>
+              <Message />
+              <Message />
+              </div>
+            <div className="chatBoxBottom">
+              <textarea className ="chatMessageInput" placeholder="Write something..."></textarea>
+              <button className= "chatSubmitButton">Send</button>
+            </div>
           </div>
 
       <div className="chatOnline"></div>

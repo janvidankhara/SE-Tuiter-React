@@ -11,7 +11,7 @@
 .messageText{
     padding: 10px;
     border-radius: 20px;
-    background-color: rgb(39, 39, 218);
+    background-color: rgb(47, 91, 236);
     color: white;
     max-width: 200px;
 }
@@ -35,6 +35,6 @@
 }
 
 .message.own .messageText{
-    background-color: thistle;
+    background-color: rgb(202, 201, 201);
     color: black;
 }
