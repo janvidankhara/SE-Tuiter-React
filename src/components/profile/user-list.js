@@ -13,13 +13,13 @@ export const UserList = ({users, deleteUser}) => {
           <span className="fs-3">
             {user.username}
           </span>
-              <button onClick={(e) => {
+              {/* <button onClick={(e) => {
                 e.stopPropagation()
                 e.preventDefault()
                 deleteUser(user._id)
               }} className="btn btn-danger fa-pull-right">
                 <i className="fas fa-remove"></i>
-              </button>
+              </button> */}
             </Link>
           )
         })

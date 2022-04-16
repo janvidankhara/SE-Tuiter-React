@@ -1,7 +1,7 @@
 import axios from "axios";
-const BASE_URL = "https://cs5500-ass4.herokuapp.com";
+//const BASE_URL = "https://cs5500-ass4.herokuapp.com";
 //"http://localhost:4000";
-//const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const USERS_API = `${BASE_URL}/api/users`;
 
 export const createUser = (user) =>
@@ -27,5 +27,9 @@ export const deleteUsersByUsername = (username) =>
 const service = {
   findAllUsers
 }
+
+export const findUserByUsername = (username) =>
+axios.get(`${USERS_API}/username/${username}`)
+  .then(response => response.data);
 
 export default service;

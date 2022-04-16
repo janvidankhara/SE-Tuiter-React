@@ -4,7 +4,7 @@
 }
 
 .chatMenu{
-    flex: 3;
+    flex: 1;
 }
 
 .chatBoxBottom{
@@ -31,7 +31,7 @@
 }
 
 .chatBox{
-    flex: 5;
+    flex: 3;
 }
 
 .chatBoxWrapper {
@@ -55,3 +55,27 @@
     padding: 10px;
     height: 100%
 }
+
+.noConversationText{
+    position:absolute;
+    top: 10%;
+    font-size: 30px;
+    color: grey;
+    cursor: default;
+}
+
+/* .chatConvoInput{
+    width: 350px;
+    height: 50px;
+}
+
+.chatConvoButton{
+    position:absolute;
+    width: 70px;
+    height: 40px;
+    right:45%;
+    border:none;
+    border-radius: 5px;
+    background-color: rgb(119, 226, 185);
+    color: white(74, 74, 78);
+} */
