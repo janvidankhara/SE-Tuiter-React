@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //const BASE_URL = "http://localhost:4000";
-const BASE_URL = "https://se-tuiter-project-back-end.herokuapp.com"
+const BASE_URL = "https://se-tuiter-back-end.herokuapp.com"
 const USERS_API = `${BASE_URL}/api/users`;
 const TUITS_API = `${BASE_URL}/api/tuits`;
 
