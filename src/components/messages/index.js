@@ -22,7 +22,7 @@ const Messages = () => {
 
 
   useEffect(async () =>{
-    socket.current = io("https://loquacious-banoffee-3ca7fa.netlify.com");
+    socket.current = io("https://loquacious-banoffee-3ca7fa.netlify.app");
     socket.current.on("getMessage", data => {
       setArrivalMessage({
         from: data.fromId,
