@@ -22,7 +22,9 @@ const Messages = () => {
 
 
   useEffect(async () =>{
-    socket.current = io("ws://localhost:8900");
+    socket.current = io("https://tiny-fox-3c36d5.netlify.app", {
+      "rejectUnauthorized" : false
+    });
     socket.current.on("getMessage", data => {
       setArrivalMessage({
         from: data.fromId,
