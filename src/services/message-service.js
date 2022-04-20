@@ -1,7 +1,7 @@
 import axios from "axios";
 import Conversation from "../components/conversation/conversation";
 
-const BASE_URL = "https://se-tuiter-back-end.herokuapp.com"
+const BASE_URL = process.env.REACT_APP_BASE_URL
 //const BASE_URL = "http://localhost:4000";
 const USERS_API = `${BASE_URL}/api/users`;
 
