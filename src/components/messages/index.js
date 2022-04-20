@@ -22,7 +22,7 @@ const Messages = () => {
 
 
   useEffect(async () =>{
-    socket.current = io("ws://localhost:8900");
+    socket.current = io("http://localhost:8900");
     socket.current.on("getMessage", data => {
       setArrivalMessage({
         from: data.fromId,
