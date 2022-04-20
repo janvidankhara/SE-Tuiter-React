@@ -1,8 +1,8 @@
 import axios from "axios";
 import Conversation from "../components/conversation/conversation";
 
-//const BASE_URL = "https://cs5500-ass4.herokuapp.com"
-const BASE_URL = "http://localhost:4000";
+const BASE_URL = "https://se-tuiter-project-back-end.herokuapp.com"
+//const BASE_URL = "http://localhost:4000";
 const USERS_API = `${BASE_URL}/api/users`;
 
 const api = axios.create({
@@ -34,4 +34,5 @@ export const findMessageFromConversation = (conversationId) =>
 export const createConversation = (conversation) =>
         api.post(`${USERS_API}/conversation`,conversation)    
         
-        
+export const findConversationOfBothUsers = (uid1,uid2) =>
+        api.get(`${USERS_API}/findConversation/${uid1}/${uid2}`)

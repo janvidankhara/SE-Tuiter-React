@@ -16,6 +16,7 @@ const Messages = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
+  const [noConversation, setNoConversation] = useState(false)
   const scrollRef = useRef();
   const socket = useRef()
 
@@ -59,19 +60,19 @@ console.log(socket)
   
       
       useEffect(async ()=>{
-        if(user && user._id){
+        if(user && user._id || noConversation){
           try{
              console.log(user._id)
              const res = await service1.findConversationOfUser(user._id)
              setConversations(res.data)
-             
+             !noConversation && setNoConversation(false)
            }
          catch(err){
            console.log(err);
          }
-
+      
         }
-      }, [user])
+      }, [user, noConversation])
   
       useEffect(async () =>{
         try{
@@ -106,18 +107,32 @@ console.log(socket)
         console.log(err)
       }
     }
-    // const handleConvo = async(e) => {
-    //   const u2= await service3.findUserByUsername(user2);
-    //   console.log(u2?._id);
-    //   e.preventDefault();
-    //   const conversation = {
-    //     uid1:user?._id,
-    //     uid2:u2?._id,
-    //   };
-    //   const res = await service1.createConversation(conversation);
 
-    // }
-
+    const handleConvo = async(e) => {
+      const u2= await service3.findUserByUsername(user2);
+      console.log(u2);
+      console.log(u2?._id);
+      if(u2){
+           e.preventDefault();
+           const conversation = {
+            uid1:user?._id,
+            uid2:u2?._id,
+           };
+           const res = await service1.findConversationOfBothUsers(user?._id,u2?._id);
+           console.log(">>> res : ", res.data.length)
+           if(res.data.length == 0){
+               const res = await service1.createConversation(conversation);
+               setNoConversation(true)
+           }
+           else
+           {
+               console.log("Conversation found!!");
+           }
+    
+      }
+    
+    }
+    
     useEffect(async () =>{
       scrollRef.current?.scrollIntoView({behavior: "smooth"})
   }, [messages]);
@@ -127,12 +142,10 @@ console.log(socket)
       {/* <h1>Messages Screen</h1> */}
       <div className="chatMenu"></div>
           <div className= "chatMenuWrapper">
-            {/* <input placeholder= "Search for friends" className="chatMenuInput" /> */}
-            
-            {/* <textarea className ="chatConvoInput" placeholder="Enter username to chat.."
+            <textarea className ="chatConvoInput" placeholder="Enter username to chat.."
               onChange = {(e) => setUser2(e.target.value)}
               value={user2}></textarea>
-              <button className= "chatConvoButton" onClick={handleConvo} >Start</button> */}
+              <button className= "chatConvoButton" onClick={handleConvo} >Start</button>
             {conversations.map((c) => (
               <div onClick={()=>setCurrentChat(c)}>
                 <Conversation conversation ={c} currentUser={user}/>
