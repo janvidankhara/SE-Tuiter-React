@@ -22,7 +22,7 @@ const Messages = () => {
 
 
   useEffect(async () =>{
-    socket.current = io(8900,{
+    socket.current = io("http://localhost:8900",{
        "rejectUnauthorized" : false,
     });
     socket.current.on("getMessage", data => {
