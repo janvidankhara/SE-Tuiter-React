@@ -22,7 +22,7 @@ const Messages = () => {
 
 
   useEffect(async () =>{
-    socket.current = io("http://loquacious-banoffee-3ca7fa.netlify.app",{
+    socket.current = io("https://loquacious-banoffee-3ca7fa.netlify.app",{
        "rejectUnauthorized" : false,
     });
     socket.current.on("getMessage", data => {
